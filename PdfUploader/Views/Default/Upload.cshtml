@@ -1,0 +1,26 @@
+﻿@model PdfUploader.Models.FileModel
+
+@{
+    ViewBag.Title = "Upload";
+}
+
+<h2>Upload</h2>
+
+
+@using (Html.BeginForm("UploadFile",
+                        "Default",
+                        FormMethod.Post,
+                        new { enctype = "multipart/form-data" }))
+{
+    <label for="file">Yüklenecek Dosya:</label>
+    @Html.TextBoxFor(m => m.PdfFile, new { type = "file" })
+    @Html.ValidationMessageFor(m => m.PdfFile)
+    <input type="submit" value="Upload PDF" />
+    <br><br>
+    @ViewBag.Message
+}
+
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
